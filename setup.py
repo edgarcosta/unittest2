@@ -10,15 +10,7 @@
 import os
 import sys
 
-class late_version:
-    def __str__(self):
-        from unittest2 import __version__ as VERSION
-        return VERSION
-    def __add__(self, other):
-        return str(self) + other
-    def replace(self, old, new):
-        return str(self).replace(old, new)
-VERSION = late_version()
+VERSION = [elt.strip() for elt in open("unittest2/__init__.py").readlines() if elt.startswith('__version__')][0].split("'")[1] 
 
 NAME = 'unittest2'
 
